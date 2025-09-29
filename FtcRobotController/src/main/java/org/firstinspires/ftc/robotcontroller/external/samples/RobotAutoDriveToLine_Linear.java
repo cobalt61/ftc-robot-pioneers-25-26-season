@@ -121,10 +121,7 @@ public class RobotAutoDriveToLine_Linear extends LinearOpMode {
         leftDrive.setPower(APPROACH_SPEED);
         rightDrive.setPower(APPROACH_SPEED);
 
-        // run until the white line is seen OR the driver presses STOP;
-        while (opModeIsActive() && (getBrightness() < WHITE_THRESHOLD)) {
-            sleep(5);
-        }
+        sleep(5);
 
         // Stop all motors
         leftDrive.setPower(0);
