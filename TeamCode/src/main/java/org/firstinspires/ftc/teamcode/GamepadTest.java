@@ -51,8 +51,7 @@ import com.qualcomm.robotcore.util.Range;
  */
 
 @TeleOp(name="First Gamepad Test", group="Linear OpMode")
-@Disabled
-public class FirstGamepadTest extends LinearOpMode {
+public class GamepadTest extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
@@ -107,6 +106,8 @@ public class FirstGamepadTest extends LinearOpMode {
             rightDrive.setPower(rightPower);
 
             // Show the elapsed game time and wheel power.
+            telemetry.addData("Left Stick Direction: ", drive);
+            telemetry.addData("Right Stick Direction: ",turn);
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftPower, rightPower);
             telemetry.update();
