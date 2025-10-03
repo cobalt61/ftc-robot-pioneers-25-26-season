@@ -54,8 +54,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
 
-@Autonomous(name="My First Robot Autonomy", group="Linear OpMode")
-public class RobotAutoDriveByTime_Linear extends LinearOpMode {
+@Autonomous(name="Moving Test", group="Linear OpMode")
+public class MovingTest extends LinearOpMode {
 
     /* Declare OpMode members. */
     private DcMotor         leftDrive   = null;
@@ -66,6 +66,35 @@ public class RobotAutoDriveByTime_Linear extends LinearOpMode {
 
     static final double     FORWARD_SPEED = 0.6;
     static final double     TURN_SPEED    = 0.5;
+    public void forward (int time) {
+        leftDrive.setPower(1);
+        rightDrive.setPower(1);
+        sleep(time);
+        leftDrive.setPower(0);
+        rightDrive.setPower(0);
+    }
+
+    public void left (int time) {
+        leftDrive.setPower(-1);
+        rightDrive.setPower(1);
+        sleep(time);
+        leftDrive.setPower(0);
+        rightDrive.setPower(0);
+    }
+    public void right (int time){
+        leftDrive.setPower(1);
+        rightDrive.setPower(-1);
+        sleep(time);
+        leftDrive.setPower(0);
+        rightDrive.setPower(0);
+    }
+    public void back (int time){
+        leftDrive.setPower(-1);
+        rightDrive.setPower(-1);
+        sleep(time);
+        leftDrive.setPower(0);
+        rightDrive.setPower(0);
+    }
 
     @Override
     public void runOpMode() {
@@ -86,38 +115,6 @@ public class RobotAutoDriveByTime_Linear extends LinearOpMode {
 
         // Wait for the game to start (driver presses START)
         waitForStart();
-
-        // Step through each leg of the path, ensuring that the OpMode has not been stopped along the way.
-
-        public void forward (int time) {
-           leftDrive.setPower(1);
-           rightDrive.setPower(1);
-           sleep(time);
-           leftDrive.setPower(0);
-           rightDrive.setPower(0);
-        }
-
-        public void left (int time) {
-            leftDrive.setPower(-1);
-            rightDrive.setPower(1);
-            sleep(time);
-            leftDrive.setPower(0);
-            rightDrive.setPower(0);
-        }
-        public void right (int time){
-            leftDrive.setPower(1);
-            rightDrive.setPower(-1);
-            sleep(time);
-            leftDrive.setPower(0);
-            rightDrive.setPower(0);
-        }
-        public void back (int time){
-            leftDrive.setPower(-1);
-            rightDrive.setPower(-1);
-            sleep(time);
-            leftDrive.setPower(0);
-            rightDrive.setPower(0);
-        }
         forward(1000);
         left(1000);
         right(1000);
@@ -126,5 +123,8 @@ public class RobotAutoDriveByTime_Linear extends LinearOpMode {
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);
+        // Step through each leg of the path, ensuring that the OpMode has not been stopped along the way.
+
+
     }
 }
