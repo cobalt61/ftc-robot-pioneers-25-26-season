@@ -89,10 +89,21 @@ public class RobotAutoDriveByTime_Linear extends LinearOpMode {
 
         // Step through each leg of the path, ensuring that the OpMode has not been stopped along the way.
 
+        public void forward (int time) {
+           leftDrive.setPower(1);
+           rightDrive.setPower(1);
+           sleep(time);
+           leftDrive.setPower(0);
+           rightDrive.setPower(0);
+        }
 
-        leftDrive.setPower(0);
-        rightDrive.setPower(0);
-
+        public void left (int time) {
+            leftDrive.setPower(-1);
+            rightDrive.setPower(1);
+            sleep(time);
+            leftDrive.setPower(0);
+            rightDrive.setPower(0);
+        }
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);
